@@ -33,7 +33,7 @@ if empty(glob('~/.config/nvim/_machine_specific.vim'))
 	let has_machine_specific_file = 0
 	silent! exec "!cp ~/.config/nvim/default_configs/_machine_specific_default.vim ~/.config/nvim/_machine_specific.vim"
 endif
-source $XDG_CONFIG_HOME/nvim/_machine_specific.vim
+source ~/.config/nvim/_machine_specific.vim
 
 
 " ====================
@@ -56,7 +56,7 @@ set number
 set relativenumber
 set cursorline
 set hidden
-set noexpandtab
+set expandtab
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
@@ -117,7 +117,7 @@ tnoremap <C-O> <C-\><C-N><C-O>
 " ===
 " Set <LEADER> as <SPACE>, ; as :
 let mapleader=" "
-noremap ; :
+" noremap ; :
 
 " Save & quit
 noremap Q :q<CR>
@@ -129,11 +129,11 @@ noremap <LEADER>rc :e $HOME/.config/nvim/init.vim<CR>
 noremap <LEADER>rv :e .nvimrc<CR>
 
 " Undo operations
-noremap l u
+" noremap l u
 
 " Insert Key
-noremap k i
-noremap K I
+" noremap k i
+" noremap K I
 
 " make Y to copy till the end of the line
 nnoremap Y y$
@@ -173,40 +173,42 @@ noremap <silent> <LEADER>o za
 " < n   i >
 "     e
 "     v
-noremap <silent> u k
-noremap <silent> n h
-noremap <silent> e j
-noremap <silent> i l
-noremap <silent> gu gk
-noremap <silent> ge gj
+" noremap <silent> u k
+" noremap <silent> n h
+" noremap <silent> e j
+" noremap <silent> i l
+" noremap <silent> gu gk
+" noremap <silent> ge gj
 noremap <silent> \v v$h
 
 " U/E keys for 5 times u/e (faster navigation)
-noremap <silent> U 5k
-noremap <silent> E 5j
+" noremap <silent> U 5k
+" noremap <silent> U 5k
+noremap <silent> J 5j
+noremap <silent> K 5k
 
 " N key: go to the start of the line
-noremap <silent> N 0
+" noremap <silent> N 0
 " I key: go to the end of the line
-noremap <silent> I $
+" noremap <silent> I $
 
 " Faster in-line navigation
-noremap W 5w
-noremap B 5b
+" noremap W 5w
+" noremap B 5b
 
 " set h (same as n, cursor left) to 'end of word'
-noremap h e
+" noremap h e
 
 " Ctrl + U or E will move up/down the view port without moving the cursor
-noremap <C-U> 5<C-y>
-noremap <C-E> 5<C-e>
+" noremap <C-U> 5<C-y>
+" noremap <C-E> 5<C-e>
 
 
 
-source $XDG_CONFIG_HOME/nvim/cursor.vim
+" source ~/.config/nvim/cursor.vim
 
 "If you use Qwerty keyboard, uncomment the next line.
-"source $XDG_CONFIG_HOME/nvim/cursor_for_qwerty.vim
+source ~/.config/nvim/cursor_for_qwerty.vim
 
 " ===
 " === Insert Mode Cursor Movement
@@ -249,10 +251,10 @@ noremap qf <C-w>o
 noremap s <nop>
 
 " split the screens to up (horizontal), down (horizontal), left (vertical), right (vertical)
-noremap su :set nosplitbelow<CR>:split<CR>:set splitbelow<CR>
-noremap se :set splitbelow<CR>:split<CR>
-noremap sn :set nosplitright<CR>:vsplit<CR>:set splitright<CR>
-noremap si :set splitright<CR>:vsplit<CR>
+noremap si :set nosplitbelow<CR>:split<CR>:set splitbelow<CR>
+noremap sk :set splitbelow<CR>:split<CR>
+noremap sj :set nosplitright<CR>:vsplit<CR>:set splitright<CR>
+noremap sl :set splitright<CR>:vsplit<CR>
 
 " Resize splits with arrow keys
 noremap <up> :res +5<CR>
@@ -291,7 +293,7 @@ noremap tmi :+tabmove<CR>
 " === Markdown Settings
 " ===
 " Snippets
-source $XDG_CONFIG_HOME/nvim/md-snippets.vim
+source ~/.config/nvim/md-snippets.vim
 " auto spell
 autocmd BufRead,BufNewFile *.md setlocal spell
 
@@ -892,8 +894,8 @@ endfunc
 let g:VM_leader                     = {'default': ',', 'visual': ',', 'buffer': ','}
 let g:VM_maps                       = {}
 let g:VM_custom_motions             = {'n': 'h', 'i': 'l', 'u': 'k', 'e': 'j', 'N': '0', 'I': '$', 'h': 'e'}
-let g:VM_maps['i']                  = 'k'
-let g:VM_maps['I']                  = 'K'
+" let g:VM_maps['i']                  = 'k'
+" let g:VM_maps['I']                  = 'K'
 let g:VM_maps['Find Under']         = '<C-k>'
 let g:VM_maps['Find Subword Under'] = '<C-k>'
 let g:VM_maps['Find Next']          = ''
@@ -1290,7 +1292,7 @@ let g:dartfmt_options = ["-l 100"]
 " ===
 " === tcomment_vim
 " ===
-nnoremap ci cl
+" nnoremap ci cl
 let g:tcomment_textobject_inlinecomment = ''
 nmap <LEADER>cn g>c
 vmap <LEADER>cn g>
@@ -1307,12 +1309,12 @@ let g:move_key_modifier = 'C'
 " ===
 " === any-jump
 " ===
-nnoremap j :AnyJump<CR>
+" nnoremap j :AnyJump<CR>
 let g:any_jump_window_width_ratio  = 0.8
 let g:any_jump_window_height_ratio = 0.9
 
 
-" ===
+" === 
 " === typescript-vim
 " ===
 let g:typescript_ignore_browserwords = 1
