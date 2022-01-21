@@ -241,10 +241,10 @@ noremap = n
 " ===
 " Use <space> + new arrow keys for moving the cursor around windows
 noremap <LEADER>w <C-w>w
-noremap <LEADER>u <C-w>k
-noremap <LEADER>e <C-w>j
-noremap <LEADER>n <C-w>h
-noremap <LEADER>i <C-w>l
+noremap <LEADER>k <C-w>k
+noremap <LEADER>j <C-w>j
+noremap <LEADER>h <C-w>h
+noremap <LEADER>l <C-w>l
 noremap qf <C-w>o
 
 " Disable the default s key
@@ -308,7 +308,7 @@ nnoremap \t :tabe<CR>:-tabmove<CR>:term sh -c 'st'<CR><C-\><C-N>:q<CR>
 noremap <LEADER>/ :set splitbelow<CR>:split<CR>:res +10<CR>:term<CR>
 
 " Press space twice to jump to the next '<++>' and edit it
-noremap <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
+noremap <LEADER><LEADER> <Esc>/<CR>:nohlsearch<CR>c4l
 
 " Spelling Check with <space>sc
 noremap <LEADER>sc :set spell!<CR>
@@ -316,7 +316,7 @@ noremap <LEADER>sc :set spell!<CR>
 " Press ` to change case (instead of ~)
 noremap ` ~
 
-noremap <C-c> zz
+"noremap <C-c> zz
 
 " Auto change directory to current dir
 autocmd BufEnter * silent! lcd %:p:h
@@ -419,7 +419,8 @@ Plug 'RRethy/vim-illuminate'
 " File navigation
 "Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 "Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf', { 'do': 'yes \| ./install' }
 Plug 'junegunn/fzf.vim'
 Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 Plug 'kevinhwang91/rnvimr'
@@ -446,7 +447,7 @@ Plug 'mbbill/undotree'
 
 " Git
 Plug 'theniceboy/vim-gitignore', { 'for': ['gitignore', 'vim-plug'] }
-Plug 'theniceboy/fzf-gitignore', { 'do': ':UpdateRemotePlugins' }
+" Plug 'theniceboy/fzf-gitignore', { 'do': ':UpdateRemotePlugins' }
 "Plug 'mhinz/vim-signify'
 Plug 'airblade/vim-gitgutter'
 Plug 'cohama/agit.vim'
@@ -526,11 +527,11 @@ Plug 'easymotion/vim-easymotion'
 "Plug 'junegunn/vim-peekaboo'
 "Plug 'wellle/context.vim'
 Plug 'svermeulen/vim-subversive'
-Plug 'theniceboy/argtextobj.vim'
+" Plug 'theniceboy/argtextobj.vim'
 Plug 'rhysd/clever-f.vim'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'theniceboy/pair-maker.vim'
-Plug 'theniceboy/vim-move'
+" Plug 'theniceboy/vim-move'
 " Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'Yggdroot/indentLine'
 
@@ -576,7 +577,8 @@ Plug 'lambdalisue/suda.vim' " do stuff like :sudowrite
 
 
 call plug#end()
-set re=0
+
+"set re=0
 
 " experimental
 set lazyredraw
@@ -594,7 +596,7 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 "let g:oceanic_next_terminal_italic = 1
 "let g:one_allow_italics = 1
 
-"color dracula
+" color dracula
 "color one
 color deus
 "color gruvbox
@@ -857,19 +859,19 @@ let g:ctrlp_cmd = 'CtrlP'
 " ===
 " === Undotree
 " ===
-noremap L :UndotreeToggle<CR>
+noremap U :UndotreeToggle<CR>
 let g:undotree_DiffAutoOpen = 1
 let g:undotree_SetFocusWhenToggle = 1
 let g:undotree_ShortIndicators = 1
 let g:undotree_WindowLayout = 2
 let g:undotree_DiffpanelHeight = 8
 let g:undotree_SplitWidth = 24
-function g:Undotree_CustomMap()
-	nmap <buffer> u <plug>UndotreeNextState
-	nmap <buffer> e <plug>UndotreePreviousState
-	nmap <buffer> U 5<plug>UndotreeNextState
-	nmap <buffer> E 5<plug>UndotreePreviousState
-endfunc
+function! g:Undotree_CustomMap()
+	nmap <buffer> j <plug>UndotreeNextState
+	nmap <buffer> k <plug>UndotreePreviousState
+	nmap <buffer> J 5<plug>UndotreeNextState
+	nmap <buffer> K 5<plug>UndotreePreviousState
+endfunction
 
 
 " ==
@@ -1384,4 +1386,5 @@ exec "nohlsearch"
 if has_machine_specific_file == 0
 	exec "e ~/.config/nvim/_machine_specific.vim"
 endif
+
 
